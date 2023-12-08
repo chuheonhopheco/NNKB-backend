@@ -10,8 +10,6 @@ const createProduct = async(req, res) => {
                 message: 'The input is required'
             })
         }
-
-        console.log('response',req.body)
         const response = await ProductService.createProduct(req.body)
         return res.status(200).json(response)
     }catch(e){
@@ -74,8 +72,8 @@ const deleteProduct = async (req, res) => {
 }
 const getAllProduct = async (req, res) => {
     try {
-        const { limit, page, sort, filter } = req.query
-        const response = await ProductService.getAllProduct(Number(limit) || null, Number(page) || 0, sort, filter)
+        const {limit, page } = req.query
+        const response = await ProductService.getAllProduct(Number(limit), Number(page))
         return res.status(200).json(response)
     } catch (e) {
         return res.status(404).json({
