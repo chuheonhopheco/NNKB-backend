@@ -3,7 +3,6 @@ const ProductService = require('../services/ProductService')
 const createProduct = async(req, res) => {
     try{
         const {name, image, type, price, countInStock, rating, description} = req.body
-
         if(!name || !image || !type || !price || !countInStock || !rating ){
             return res.status(200).json({
                 status: 'ERR',
@@ -81,8 +80,6 @@ const getAllProduct = async (req, res) => {
         })
     }
 }
-
-
 module.exports = {
     createProduct,
     updateProduct,
